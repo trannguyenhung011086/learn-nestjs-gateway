@@ -2,13 +2,11 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ClientProxyFactory, Transport } from '@nestjs/microservices';
 import { OrdersController } from './orders/orders.controller';
-import { PaymentsController } from './payments/payments.controller';
 import { OrdersService } from './orders/orders.service';
-import { PaymentsService } from './payments/payments.service';
 
 @Module({
   imports: [ConfigModule.forRoot()],
-  controllers: [OrdersController, PaymentsController],
+  controllers: [OrdersController],
   providers: [
     {
       provide: 'ORDER_SERVICE',
@@ -23,7 +21,6 @@ import { PaymentsService } from './payments/payments.service';
         }),
     },
     OrdersService,
-    PaymentsService,
   ],
 })
 export class AppModule {}
